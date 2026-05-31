@@ -36,19 +36,25 @@ curl -X 'POST' \
 ```
 
 ### Respon
-
+```json
 {
-  "status_code": 200,
-  "laporan": "Ada genangan air setinggi 50cm di jalan raya guntur",
-  "kategori": "Sedang",
-  "persentase": "76.96%",
-  "status_tindakan": "🟡 WASPADA (Pantau Lokasi)",
-  "raw_probabilities": {
-    "rendah": 0.7696378827095032,
-    "sedang": 0.14493948221206665,
-    "tinggi": 0.08542269468307495
+  "success": true,
+  "input_text": "Ada genangan air setinggi 50cm di jalan raya guntur",
+  "predictions": [
+    {
+      "label": "Sedang",
+      "status_tindakan": "🟡 WASPADA (Pantau Lokasi)",
+      "persentase": "76.96%",
+      "probability": 0.7696
+    }
+  ],
+  "all_probabilities": {
+    "kategori_rendah": 0.7696,
+    "kategori_sedang": 0.1449,
+    "kategori_tinggi": 0.0854
   }
 }
+```
 
 ## API Documentation
 
