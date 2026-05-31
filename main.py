@@ -97,17 +97,22 @@ def prediksi_urgensi(request: KeluhanRequest):
             status = "🟢 AMAN (Tindak Lanjut Rutin)"
             
         return {
-            "status_code": 200,
-            "laporan": request.teks_keluhan,
-            "kategori": hasil,
-            "persentase": f"{skor * 100:.2f}%",
-            "status_tindakan": status,
-            "raw_probabilities": {
-                "rendah": float(pred[0]),
-                "sedang": float(pred[1]),
-                "tinggi": float(pred[2])
+        "success": True,
+        "input_text": request.teks_keluhan,
+        "predictions": [
+            {
+                "label": hasil,            
+                "status_tindakan": status, 
+                "persentase": f"{skor * 100:.2f}%", 
+                "probability": float(skor)
             }
+        ],
+        "all_probabilities": {
+            "kategori_rendah": float(pred[0]),
+            "kategori_sedang": float(pred[1]),
+            "kategori_tinggi": float(pred[2])
         }
+    }
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Terjadi kesalahan saat inferensi server: {str(e)}")

@@ -50,22 +50,6 @@ curl -X 'POST' \
   }
 }
 
-
-## Local Development
-
-### Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### Run FastAPI
-
-```bash
-uvicorn app.main:app --reload
-```
-
-
 ## API Documentation
 
 https://destiys-urgensi-keluhan-api.hf.space/docs
